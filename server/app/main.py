@@ -27,7 +27,7 @@ class SensorPayload(BaseModel):
     acc_z: float
 
     gyro_x: Optional[float] = 0.0
-    gyto_y: Optional[float] = 0.0
+    gyro_y: Optional[float] = 0.0
     gyro_z: Optional[float] = 0.0
 
     latitude: float
