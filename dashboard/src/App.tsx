@@ -1,8 +1,10 @@
+import TacticalMap from "./components/TacticalMap";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { fetchSoldiers } from "./api/soldier";
 import SoldierCard from "./components/SoldierCard";
 import type { Soldier } from "./types/soldier";
+
 
 function App() {
   const [soldiers, setSoldiers] = useState<Soldier[]>([]);
@@ -75,6 +77,8 @@ function App() {
       </section>
 
       {error && <div className="error">{error}</div>}
+
+      <TacticalMap soldiers={soldiers} />
 
       <section className="grid">
         {soldiers.length === 0 && !error ? (
