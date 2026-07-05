@@ -1,5 +1,21 @@
 export type RiskLevel = "normal" | "caution" | "warning" | "critical";
 
+export type RiskType =
+  | "normal"
+  | "fatigue_or_heat_stress"
+  | "heat_stress_risk"
+  | "fall_or_no_response"
+  | "impact_detected"
+  | "battery_risk"
+  | "signal_loss_risk";
+
+export type ActivityState =
+  | "no_response"
+  | "low_activity"
+  | "normal_activity"
+  | "high_activity"
+  | "impact";
+  
 export interface Soldier {
   soldier_id: string;
   timestamp: string;
@@ -22,4 +38,7 @@ export interface Soldier {
   risk_level: RiskLevel;
   risk_reasons: string[];
   acc_mag: number;
+  risk_type: RiskType;
+  activity_state: ActivityState;
 }
+

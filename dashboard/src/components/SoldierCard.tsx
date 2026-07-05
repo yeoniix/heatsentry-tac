@@ -38,6 +38,44 @@ function getRiskClass(level: Soldier["risk_level"]){
     }
 }
 
+function getRiskTypeLabel(type: Soldier["risk_type"]) {
+  switch (type) {
+    case "normal":
+      return "정상";
+    case "fatigue_or_heat_stress":
+      return "탈진/열스트레스 위험";
+    case "heat_stress_risk":
+      return "열스트레스 위험";
+    case "fall_or_no_response":
+      return "낙상/무반응 위험";
+    case "impact_detected":
+      return "충격 감지";
+    case "battery_risk":
+      return "배터리 위험";
+    case "signal_loss_risk":
+      return "통신 위험";
+    default:
+      return "알 수 없음";
+  }
+}
+
+function getActivityLabel(activity: Soldier["activity_state"]) {
+  switch (activity) {
+    case "no_response":
+      return "무반응";
+    case "low_activity":
+      return "저활동";
+    case "normal_activity":
+      return "정상 활동";
+    case "high_activity":
+      return "고강도 활동";
+    case "impact":
+      return "충격";
+    default:
+      return "알 수 없음";
+  }
+}
+
 export default function SoldierCard({ soldier }: SoldierCardProps) {
   return (
     <div className={getRiskClass(soldier.risk_level)}>
@@ -70,7 +108,15 @@ export default function SoldierCard({ soldier }: SoldierCardProps) {
           <span>배터리</span>
           <strong>{soldier.battery}%</strong>
         </div>
-      </div>
+        <div>
+            <span>활동 상태</span>
+            <strong>{getActivityLabel(soldier.activity_state)}</strong>
+        </div>
+        <div>
+            <span>위험 유형</span>
+            <strong>{getRiskTypeLabel(soldier.risk_type)}</strong>
+        </div>
+    </div>
 
       <div className="location">
         <span>GPS</span>
@@ -92,3 +138,4 @@ export default function SoldierCard({ soldier }: SoldierCardProps) {
     </div>
   );
 }
+

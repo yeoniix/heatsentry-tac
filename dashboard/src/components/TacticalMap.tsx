@@ -103,6 +103,8 @@ export default function TacticalMap({ soldiers }: TacticalMapProps) {
                   <p>심박: {soldier.heart_rate} bpm</p>
                   <p>피부온도: {soldier.skin_temp} ℃</p>
                   <p>활동량: {soldier.acc_mag}</p>
+                  <p>활동 상태: {soldier.activity_state}</p>
+                  <p>위험 유형: {soldier.risk_type}</p>
                 </div>
               </Popup>
             </Marker>
